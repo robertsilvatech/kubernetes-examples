@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: blue
+  name: blue
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+    targetPort: 5000
+  type: NodePort
+  selector:
+    app: blue
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: red
+  name: red
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+    targetPort: 5000
+  type: NodePort
+  selector:
+    app: red

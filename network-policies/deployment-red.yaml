@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: red
+  name: red
+  namespace: red-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: red
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: red
+    spec:
+      containers:
+      - image: robertsilvatech/flask-color:latest
+        imagePullPolicy: Always
+        name: flask-color
+        resources: {}
+        ports:
+          - containerPort: 5000
+            protocol: TCP
+        env:
+          - name: COLOR
+            value: red

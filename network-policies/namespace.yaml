@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: blue-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: red-ns

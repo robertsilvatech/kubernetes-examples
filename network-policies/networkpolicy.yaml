@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: blue-network-policy
+  namespace: blue-ns
+spec:
+  podSelector:
+    matchLabels:
+      app: blue
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: blue-ns # dessa maneira só aceita conexão do mesmo cluster            
+      ports:
+        - protocol: TCP
+          port: 5000
